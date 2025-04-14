@@ -1,0 +1,63 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- Header with profile info -->
+  <view class="header">
+    <view class="title">个人中心</view>
+    <view class="profile-section">
+      <image class="profile-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <view class="profile-info">
+        <text class="profile-name">{{hasUserInfo ? userInfo.nickName : '尚未授权'}}</text>
+        <text class="profile-points">当前{{points}}积分</text>
+      </view>
+    </view>
+    <view class="usage-notice">感谢使用</view>
+  </view>
+
+  <!-- Menu items -->
+  <view class="menu-container">
+    <view class="menu-item" bindtap="navigateToBuyPoints">
+      <text class="menu-text">买积分</text>
+      <text class="fire-icon">🔥</text>
+      <text class="arrow">></text>
+    </view>
+    
+    <view class="menu-item" bindtap="navigateToEarnPoints">
+      <text class="menu-text">快来赚积分啦</text>
+      <text class="fire-icon">🔥</text>
+      <text class="arrow">></text>
+    </view>
+    
+    <view class="menu-item" bindtap="navigateToHistory">
+      <text class="menu-text">历史创作 (最近50条)</text>
+      <text class="arrow">></text>
+    </view>
+    
+    <view class="menu-item" bindtap="navigateToMyId">
+      <text class="menu-text">我的ID</text>
+      <text class="arrow">></text>
+    </view>
+    
+    <view class="menu-item" bindtap="navigateToGroup">
+      <text class="menu-text">加我进群</text>
+      <text class="arrow">></text>
+    </view>
+    
+    <view class="menu-item" bindtap="navigateToOfficialAccount">
+      <text class="menu-text">关注公众号</text>
+      <text class="arrow">></text>
+    </view>
+    
+    <view class="menu-item" bindtap="navigateToCozeDemo">
+      <text class="menu-text">Coze API 工作流</text>
+      <text class="fire-icon">🔥</text>
+      <text class="arrow">></text>
+    </view>
+  </view>
+  
+  <!-- If user is not authorized, show login button -->
+  <view class="login-section" wx:if="{{!hasUserInfo}}">
+    <button class="login-button" wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile">授权登录</button>
+    <button class="login-button" wx:elif="{{canIUseNicknameComp}}" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">选择头像</button>
+    <view class="login-notice" wx:else>请使用2.10.4及以上版本基础库</view>
+  </view>
+</view>

@@ -1,0 +1,67 @@
+<!--style_processor.wxml-->
+<view class="container">
+  <view class="header">
+    <text class="title">{{styleName}}</text>
+  </view>
+  
+  <view class="image-container">
+    <!-- Show the upload button if no image has been selected -->
+    <view class="upload-section" wx:if="{{!hasUploaded}}" bindtap="chooseImage">
+      <view class="upload-icon">+</view>
+      <text class="upload-text">上传图片</text>
+    </view>
+    
+    <!-- Show the selected image if one has been uploaded -->
+    <image 
+      wx:if="{{hasUploaded && !processingComplete}}" 
+      class="uploaded-image" 
+      src="{{tempImagePath}}" 
+      mode="aspectFit"
+    ></image>
+    
+    <!-- Show the result image if processing is complete -->
+    <image 
+      wx:if="{{processingComplete}}" 
+      class="result-image" 
+      src="{{resultImageUrl}}" 
+      mode="aspectFit"
+    ></image>
+  </view>
+  
+  <!-- Warning message -->
+  <view class="warning-message" wx:if="{{!processingComplete}}">
+    <text class="warning-text">温馨提示: 预计用时{{countdown}}s左右</text>
+  </view>
+  
+  <!-- Error message if any -->
+  <view class="error-message" wx:if="{{errorMessage}}">
+    <text>{{errorMessage}}</text>
+  </view>
+  
+  <!-- Action buttons -->
+  <view class="action-buttons">
+    <!-- Start processing button -->
+    <button 
+      class="process-button" 
+      bindtap="startProcessing" 
+      disabled="{{!hasUploaded || isProcessing}}"
+      wx:if="{{!processingComplete}}"
+    >
+      {{isProcessing ? '处理中...' : '开始制作'}}
+    </button>
+    
+    <!-- Save button (only shown after processing is complete) -->
+    <button 
+      class="save-button" 
+      bindtap="saveImage" 
+      wx:if="{{processingComplete}}"
+    >
+      保存到相册
+    </button>
+  </view>
+  
+  <!-- Instructions -->
+  <view class="instructions" wx:if="{{!processingComplete}}">
+    <text class="instruction-text">高清图片，用时40s左右，切勿退出当前页面</text>
+  </view>
+</view>

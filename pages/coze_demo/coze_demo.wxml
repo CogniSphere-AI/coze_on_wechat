@@ -1,0 +1,100 @@
+<!--coze_demo.wxml-->
+<view class="container">
+  <view class="header">
+    <text class="title">Coze API 工作流演示</text>
+  </view>
+
+  <!-- Configuration Section -->
+  <view class="config-section" wx:if="{{!hasSetConfig}}">
+    <view class="section-title">配置 Coze API</view>
+    
+    <view class="input-group">
+      <text class="input-label">API Key:</text>
+      <input class="input-field" type="text" placeholder="输入您的 Coze API Key" value="{{apiKey}}" bindinput="onApiKeyInput" />
+    </view>
+    
+    <view class="input-group">
+      <text class="input-label">默认 Workflow ID:</text>
+      <input class="input-field" type="text" placeholder="输入您的默认 Workflow ID" value="{{workflowId}}" bindinput="onWorkflowIdInput" />
+    </view>
+    
+    <view class="section-title">风格工作流配置</view>
+    
+    <view class="input-group">
+      <text class="input-label">照片风格 Workflow ID:</text>
+      <input class="input-field" type="text" placeholder="输入照片风格 Workflow ID" value="{{photoWorkflowId}}" bindinput="onPhotoWorkflowIdInput" />
+    </view>
+    
+    <view class="input-group">
+      <text class="input-label">国庆风格 Workflow ID:</text>
+      <input class="input-field" type="text" placeholder="输入国庆风格 Workflow ID" value="{{nationalWorkflowId}}" bindinput="onNationalWorkflowIdInput" />
+    </view>
+    
+    <view class="input-group">
+      <text class="input-label">换脸风格 Workflow ID:</text>
+      <input class="input-field" type="text" placeholder="输入换脸风格 Workflow ID" value="{{faceWorkflowId}}" bindinput="onFaceWorkflowIdInput" />
+    </view>
+    
+    <view class="section-title">腾讯云配置</view>
+    
+    <view class="input-group">
+      <text class="input-label">SecretId:</text>
+      <input class="input-field" type="text" placeholder="输入您的腾讯云 SecretId" value="{{tencentSecretId}}" bindinput="onTencentSecretIdInput" />
+    </view>
+    
+    <view class="input-group">
+      <text class="input-label">SecretKey:</text>
+      <input class="input-field" type="password" placeholder="输入您的腾讯云 SecretKey" value="{{tencentSecretKey}}" bindinput="onTencentSecretKeyInput" />
+    </view>
+    
+    <view class="input-group">
+      <text class="input-label">Bucket:</text>
+      <input class="input-field" type="text" placeholder="输入您的腾讯云 Bucket" value="{{tencentBucket}}" bindinput="onTencentBucketInput" />
+    </view>
+    
+    <view class="input-group">
+      <text class="input-label">Region:</text>
+      <input class="input-field" type="text" placeholder="输入您的腾讯云 Region" value="{{tencentRegion}}" bindinput="onTencentRegionInput" />
+    </view>
+    
+    <button class="save-button" bindtap="saveConfig">保存配置</button>
+    
+    <view class="help-text">
+      <text>您可以在 Coze 平台获取 API Key 和 Workflow ID</text>
+      <text>访问: https://www.coze.cn/open/playground/</text>
+      <text>腾讯云配置可在腾讯云控制台获取</text>
+    </view>
+  </view>
+
+  <!-- Chat Section -->
+  <view class="chat-section" wx:if="{{hasSetConfig}}">
+    <!-- Chat History -->
+    <scroll-view class="chat-history" scroll-y scroll-into-view="msg-{{responseHistory.length-1}}">
+      <block wx:for="{{responseHistory}}" wx:key="index">
+        <view id="msg-{{index}}" class="message {{item.role === 'user' ? 'user-message' : 'bot-message'}}">
+          <view class="message-content">
+            <text>{{item.content}}</text>
+          </view>
+        </view>
+      </block>
+      
+      <view class="loading-indicator" wx:if="{{isLoading}}">
+        <text>正在思考...</text>
+      </view>
+    </scroll-view>
+    
+    <!-- Input Area -->
+    <view class="input-area">
+      <input class="message-input" type="text" placeholder="输入您的问题..." value="{{userInput}}" bindinput="onUserInputChange" disabled="{{isLoading}}" />
+      <view class="button-group">
+        <button class="send-button" bindtap="callWorkflow" disabled="{{isLoading}}">发送</button>
+        <button class="stream-button" bindtap="streamWorkflow" disabled="{{isLoading}}">流式调用</button>
+      </view>
+    </view>
+    
+    <!-- Actions -->
+    <view class="actions">
+      <button class="clear-button" bindtap="clearHistory">清空对话</button>
+    </view>
+  </view>
+</view>

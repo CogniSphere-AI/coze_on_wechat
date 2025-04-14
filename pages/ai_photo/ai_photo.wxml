@@ -1,0 +1,41 @@
+<!--ai_photo.wxml-->
+<view class="container">
+  <view class="section">
+    <view class="section-title">
+      <text>AI写真</text>
+      <image class="lightning-icon" src="/images/lightning.png"></image>
+    </view>
+    <view class="style-grid">
+      <view class="style-item" wx:for="{{photoStyles}}" wx:key="id" bindtap="selectStyle" data-id="{{item.id}}" data-type="{{item.type}}" data-name="{{item.name}}">
+        <image src="{{item.image}}" mode="aspectFill"></image>
+        <view class="style-name">{{item.name}} ></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">
+      <text>国庆专场</text>
+      <image class="lightning-icon" src="/images/lightning.png"></image>
+    </view>
+    <view class="style-grid">
+      <view class="style-item" wx:for="{{nationalDayStyles}}" wx:key="id" bindtap="selectStyle" data-id="{{item.id}}" data-type="{{item.type}}" data-name="{{item.name}}">
+        <image src="{{item.image}}" mode="aspectFill"></image>
+        <view class="style-name">{{item.name}} ></view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section">
+    <view class="section-title">
+      <text>AI换脸</text>
+      <image class="lightning-icon" src="/images/lightning.png"></image>
+    </view>
+    <view class="style-grid">
+      <view class="style-item" wx:for="{{faceSwapStyles}}" wx:key="id" bindtap="selectStyle" data-id="{{item.id}}" data-type="{{item.type}}" data-name="{{item.name}}">
+        <image src="{{item.image}}" mode="aspectFill"></image>
+        <view class="style-name">{{item.name}} ></view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,163 @@
+/* coze_demo.wxss */
+page {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  padding: 30rpx 0;
+  text-align: center;
+  border-bottom: 1px solid #333;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+/* Configuration Section */
+.config-section {
+  padding: 30rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+
+.input-group {
+  margin-bottom: 30rpx;
+}
+
+.input-label {
+  display: block;
+  margin-bottom: 10rpx;
+  font-size: 28rpx;
+  color: #ccc;
+}
+
+.input-field {
+  width: 100%;
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.save-button {
+  background-color: #1aad19;
+  color: #fff;
+  border-radius: 8rpx;
+  margin-top: 20rpx;
+}
+
+.help-text {
+  margin-top: 30rpx;
+  font-size: 24rpx;
+  color: #999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Chat Section */
+.chat-section {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 20rpx;
+}
+
+.chat-history {
+  flex: 1;
+  margin-bottom: 20rpx;
+}
+
+.message {
+  margin-bottom: 20rpx;
+  max-width: 80%;
+}
+
+.user-message {
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.bot-message {
+  align-self: flex-start;
+  margin-right: auto;
+}
+
+.message-content {
+  padding: 20rpx;
+  border-radius: 10rpx;
+  word-break: break-all;
+}
+
+.user-message .message-content {
+  background-color: #1aad19;
+  color: #fff;
+}
+
+.bot-message .message-content {
+  background-color: #333;
+  color: #fff;
+}
+
+.loading-indicator {
+  text-align: center;
+  color: #999;
+  padding: 20rpx;
+}
+
+.input-area {
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx 0;
+  border-top: 1px solid #333;
+}
+
+.message-input {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.send-button, .stream-button {
+  width: 48%;
+  background-color: #1aad19;
+  color: #fff;
+  border-radius: 8rpx;
+}
+
+.actions {
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.clear-button {
+  background-color: #666;
+  color: #fff;
+  border-radius: 8rpx;
+  width: 60%;
+}

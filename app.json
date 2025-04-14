@@ -1,0 +1,39 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/ai_photo/ai_photo",
+    "pages/coze_demo/coze_demo",
+    "pages/style_processor/style_processor",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "AI写真",
+    "navigationBarBackgroundColor": "#000000",
+    "backgroundColor": "#000000"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#ffffff",
+    "backgroundColor": "#000000",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/ai_photo/ai_photo",
+        "text": "AI写真",
+        "iconPath": "images/photo_icon.png",
+        "selectedIconPath": "images/photo_icon_selected.png"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "text": "我的",
+        "iconPath": "images/profile_icon.png",
+        "selectedIconPath": "images/profile_icon_selected.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}
